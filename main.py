@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def update_alpha_i(alpha, gamma, x, y, i):
-    return alpha[i] + gamma * np.sum([1.0 - alpha[j] * y[i] * y[j] * x[i].T * x[j] for j in range(y.shape[0])])
+    return alpha[i] + gamma * (1.0 - np.sum([alpha[j] * y[i] * y[j] * x[i].T * x[j] for j in range(y.shape[0])]))
 
 def update_alpha(alpha, gamma, x, y):
     return  [update_alpha_i(alpha, gamma, x, y, i) for i in range(y.shape[0])]
