@@ -9,11 +9,9 @@ def update_alpha(alpha, gamma, x, y):
 
 def train_svm(x, y, num_of_epoch=100, gamma=0.01):
     alpha = np.zeros(y.shape)
-    w = np.zeros(x[0].T.shape)
     for _ in range(num_of_epoch):
         alpha = update_alpha(alpha, gamma, x, y)
-        w = np.sum(np.array([alpha[i] * y[i] * x[i] for i in range(y.shape[0])]), axis=0)
-    return w
+    return np.sum(np.array([alpha[i] * y[i] * x[i] for i in range(y.shape[0])]), axis=0)
 
 def train_perceptron(x, y, num_of_epoch=100, gamma=0.001):
     w = np.zeros(x[0].T.shape)
