@@ -5,7 +5,7 @@ def update_alpha_i(alpha, gamma, x, y, i):
     return alpha[i] + gamma * np.sum([1.0 - alpha[j] * y[i] * y[j] * x[i].T * x[j] for j in range(y.shape[0])])
 
 def update_alpha(alpha, gamma, x, y):
-    return  [update_alpha_i(alpha, gamma, y, x, i) for i in range(y.shape[0])]
+    return  [update_alpha_i(alpha, gamma, x, y, i) for i in range(y.shape[0])]
 
 def train_svm(x, y, num_of_epoch=100, gamma=0.01):
     alpha = np.zeros(y.shape)
